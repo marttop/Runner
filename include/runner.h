@@ -39,6 +39,14 @@ typedef struct runner {
     int inercy;
 } runner_t;
 
+typedef struct music {
+    sfMusic *background_sound;
+    sfSound *jump_sound;
+    sfSoundBuffer *buff_jump;
+    sfSound *slide_sound;
+    sfSoundBuffer *buff_slide;
+} music_t;
+
 typedef struct jump {
     sfSprite *sprite_j;
     sfTexture *texture_j;
@@ -119,12 +127,14 @@ typedef struct controll {
     background_t s_background;
     jump_t s_jump;
     slide_t s_slide;
+    music_t s_music;
 } controll_t;
 
 int game_loop(controll_t *s_controll);
 int message(void);
 
 void event_controll(controll_t *s_controll);
+void jump_slide(controll_t *s_controll);
 void animation(controll_t *s_controll);
 void jump(controll_t *s_controll);
 void fall(controll_t *s_controll);
@@ -132,6 +142,7 @@ void slide(controll_t *s_controll);
 
 void render_texts(controll_t *s_controll);
 void render_sprites(controll_t *scontroll);
+void render_sounds(controll_t *s_controll);
 void render_all(controll_t *scontroll);
 int render_runner(controll_t *s_controll);
 void render_background(controll_t *scontroll);
@@ -176,8 +187,12 @@ void draw_runner(controll_t *s_controll);
 void background_setposition(controll_t *s_controll);
 
 void destroy_all(controll_t *s_controll);
-
+void destroy_next(controll_t *s_controll);
 void init_clocks(controll_t *s_controll);
 void init_clocks2(controll_t *s_controll);
+
+int background_sound(controll_t *s_controll);
+int jump_sound(controll_t *s_controll);
+int slide_sound(controll_t *s_controll);
 
 #endif

@@ -42,9 +42,9 @@ void move_layer_1(controll_t *s_controll)
 {
     if (s_controll->s_background.pos1.x > -1920 &&
     s_controll->s_background.pos1_bis.x > 0) {
-        s_controll->s_background.pos1.x -= 500 *
+        s_controll->s_background.pos1.x -= 750 *
         s_controll->s_background.secconds;
-        s_controll->s_background.pos1_bis.x -= 500 *
+        s_controll->s_background.pos1_bis.x -= 750 *
         s_controll->s_background.secconds;
     }
     else {

@@ -29,6 +29,7 @@ SRC	=	src/start.c \
 		src/layers/layer6.c \
 		src/jump.c \
 		src/slide.c \
+		src/sounds.c \
 
 OBJ	=	$(SRC:.c=.o)
 

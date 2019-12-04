@@ -12,6 +12,7 @@ int game_loop(controll_t *s_controll)
     render_all(s_controll);
     if (!s_controll->s_game.window)
         return (EXIT_FAILURE);
+    sfMusic_play(s_controll->s_music.background_sound);
     while (sfRenderWindow_isOpen(s_controll->s_game.window)) {
         while (sfRenderWindow_pollEvent(s_controll->s_game.window,
         &s_controll->s_game.event)) {

@@ -24,4 +24,14 @@ void destroy_all(controll_t *s_controll)
     sfSprite_destroy(s_controll->s_background.layer6_bis);
     sfSprite_destroy(s_controll->s_background.layer7);
     sfSprite_destroy(s_controll->s_background.layer8);
+    destroy_next(s_controll);
+}
+
+void destroy_next(controll_t *s_controll)
+{
+    sfMusic_destroy(s_controll->s_music.background_sound);
+    sfSound_destroy(s_controll->s_music.jump_sound);
+    sfSound_destroy(s_controll->s_music.slide_sound);
+    sfSoundBuffer_destroy(s_controll->s_music.buff_jump);
+    sfSoundBuffer_destroy(s_controll->s_music.buff_slide);
 }

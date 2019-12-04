@@ -60,7 +60,7 @@ void layers_display1(controll_t *s_controll)
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_controll->s_background.layer3, NULL);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
-    s_controll->s_background.layer3_bis, NULL), layers_display2(s_controll);    
+    s_controll->s_background.layer3_bis, NULL), layers_display2(s_controll);
 }
 
 void layers_display2(controll_t *s_controll)

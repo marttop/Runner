@@ -19,8 +19,16 @@ void render_sprites(controll_t *s_controll)
     render_slide(s_controll);
 }
 
+void render_sounds(controll_t *s_controll)
+{
+    background_sound(s_controll);
+    jump_sound(s_controll);
+    slide_sound(s_controll);
+}
+
 void render_all(controll_t *s_controll)
 {
     sfRenderWindow_setFramerateLimit(s_controll->s_game.window, 60);
     render_sprites(s_controll);
+    render_sounds(s_controll);
 }
