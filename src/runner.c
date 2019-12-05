@@ -15,6 +15,7 @@ int render_runner(controll_t *s_controll)
     s_controll->s_runner.rect.left = 0, s_controll->s_runner.rect.top = 0;
     s_controll->s_runner.rect.width = 133, s_controll->s_runner.jump = 0;
     s_controll->s_runner.rect.height = 120, s_controll->s_runner.fall = 0;
+    s_controll->s_runner.jump_sec = 0;
     s_controll->s_runner.texture =
     sfTexture_createFromFile("sprites/run.png", NULL);
     s_controll->s_runner.pos.x = 190, s_controll->s_runner.pos.y = 730;
@@ -29,14 +30,14 @@ int render_runner(controll_t *s_controll)
 
 void draw_runner(controll_t *s_controll)
 {
-    sfRenderWindow_drawSprite(s_controll->s_game.window,
-    s_controll->s_runner.sprite, NULL);
     if (s_controll->s_runner.secconds > 0.06 ) {
+        move_rect_runner(s_controll, 133, 399);
         sfSprite_setTextureRect(s_controll->s_runner.sprite,
         s_controll->s_runner.rect);
-        move_rect_runner(s_controll, 133, 399);
         sfClock_restart(s_controll->s_runner.clock);
     }
+    sfRenderWindow_drawSprite(s_controll->s_game.window,
+    s_controll->s_runner.sprite, NULL);
 }
 
 void display_runner(controll_t *s_controll)

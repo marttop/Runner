@@ -35,3 +35,10 @@ void destroy_next(controll_t *s_controll)
     sfSoundBuffer_destroy(s_controll->s_music.buff_jump);
     sfSoundBuffer_destroy(s_controll->s_music.buff_slide);
 }
+
+void destroy_coin(coin_t *s_coin)
+{
+    sfSprite_destroy(s_coin->sprite);
+    sfTexture_destroy(s_coin->texture);
+    sfClock_destroy(s_coin->clock);
+}

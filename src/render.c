@@ -17,6 +17,7 @@ void render_sprites(controll_t *s_controll)
     render_jump(s_controll);
     render_background(s_controll);
     render_slide(s_controll);
+    init_coin(s_controll);
 }
 
 void render_sounds(controll_t *s_controll)

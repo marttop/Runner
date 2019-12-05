@@ -30,6 +30,9 @@ SRC	=	src/start.c \
 		src/jump.c \
 		src/slide.c \
 		src/sounds.c \
+		src/coin.c \
+		src/nodes.c \
+		src/touch_coin.c \
 
 OBJ	=	$(SRC:.c=.o)
 

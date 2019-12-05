@@ -20,6 +20,7 @@ int game_loop(controll_t *s_controll)
         }
         permanent_displays(s_controll);
         animation(s_controll);
+        touch_coin(s_controll);
     }
     destroy_all(s_controll);
     return (0);

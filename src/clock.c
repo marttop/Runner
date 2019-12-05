@@ -22,6 +22,7 @@ void init_clocks(controll_t *s_controll)
     s_controll->s_runner.jump_sec =
     s_controll->s_runner.time_air.microseconds / 1000000.0;
     init_clocks2(s_controll);
+    init_coin_clocks(s_controll);
 }
 
 void init_clocks2(controll_t *s_controll)
@@ -30,4 +31,14 @@ void init_clocks2(controll_t *s_controll)
     sfClock_getElapsedTime(s_controll->s_slide.clock);
     s_controll->s_slide.secconds =
     s_controll->s_slide.time.microseconds / 1000000.0;
+}
+
+void init_coin_clocks(controll_t *s_controll)
+{
+    coin_t *temp = s_controll->s_coin;
+    while (temp != NULL) {
+        temp->time = sfClock_getElapsedTime(temp->clock);
+        temp->secconds = temp->time.microseconds / 1000000.0;
+        temp = temp->next;
+    }
 }

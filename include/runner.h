@@ -39,6 +39,18 @@ typedef struct runner {
     int inercy;
 } runner_t;
 
+typedef struct coin {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfClock *clock;
+    sfTime time;
+    float secconds;
+    sfVector2f pos;
+    sfIntRect rect;
+    int id;
+    struct coin *next;
+} coin_t;
+
 typedef struct music {
     sfMusic *background_sound;
     sfSound *jump_sound;
@@ -128,6 +140,8 @@ typedef struct controll {
     jump_t s_jump;
     slide_t s_slide;
     music_t s_music;
+    struct coin *s_coin;
+    int nb_coins;
 } controll_t;
 
 int game_loop(controll_t *s_controll);
@@ -167,6 +181,7 @@ int render_down(controll_t *s_controll);
 
 void move_rect_runner(controll_t *s_controll, int offset, int max_value);
 void move_rect_slide(controll_t *s_controll, int offset, int max_value);
+void move_rect_coin(coin_t *s_coin, int offset, int max_value);
 void move_layers(controll_t *s_controll);
 void move_layer_1(controll_t *s_controll);
 void move_layer_2(controll_t *s_controll);
@@ -188,11 +203,24 @@ void background_setposition(controll_t *s_controll);
 
 void destroy_all(controll_t *s_controll);
 void destroy_next(controll_t *s_controll);
+void destroy_coin(coin_t *s_coin);
 void init_clocks(controll_t *s_controll);
 void init_clocks2(controll_t *s_controll);
+void init_coin_clocks(controll_t *s_controll);
 
 int background_sound(controll_t *s_controll);
 int jump_sound(controll_t *s_controll);
 int slide_sound(controll_t *s_controll);
+
+void init_coin(controll_t *s_controll);
+coin_t *render_coin(coin_t *s_coin, sfVector2f pos, int id);
+void draw_coin(controll_t *s_controll, coin_t *s_coin);
+void display_coins(controll_t *s_controll);
+void move_coins(controll_t *s_controll, coin_t *s_coin);
+void free_coins(coin_t *s_coin);
+
+void check_coin_hitbox(coin_t *s_coin, controll_t *s_controll);
+void touch_coin(controll_t *s_controll);
+void remove_coin(controll_t *s_controll, coin_t *s_coin);
 
 #endif

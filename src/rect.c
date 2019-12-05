@@ -24,3 +24,12 @@ void move_rect_slide(controll_t *s_controll, int offset, int max_value)
     else
         s_controll->s_slide.rect.left = 0;
 }
+
+void move_rect_coin(coin_t *s_coin, int offset, int max_value)
+{
+    if (s_coin->rect.left < max_value - offset) {
+        s_coin->rect.left += offset;
+    }
+    else
+        s_coin->rect.left = 0;
+}
