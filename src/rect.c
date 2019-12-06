@@ -33,3 +33,12 @@ void move_rect_coin(coin_t *s_coin, int offset, int max_value)
     else
         s_coin->rect.left = 0;
 }
+
+void move_rect_jelly(controll_t *s_controll, int offset, int max_value)
+{
+    if (s_controll->s_jelly.rect.left < max_value - offset) {
+        s_controll->s_jelly.rect.left += offset;
+    }
+    else
+        s_controll->s_jelly.rect.left = 0;
+}

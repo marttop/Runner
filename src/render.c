@@ -17,6 +17,7 @@ void render_sprites(controll_t *s_controll)
     render_jump(s_controll);
     render_background(s_controll);
     render_slide(s_controll);
+    render_jelly(s_controll);
     init_coin(s_controll);
 }
 
@@ -25,6 +26,7 @@ void render_sounds(controll_t *s_controll)
     background_sound(s_controll);
     jump_sound(s_controll);
     slide_sound(s_controll);
+    coin_sound(s_controll);
 }
 
 void render_all(controll_t *s_controll)

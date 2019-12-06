@@ -39,6 +39,16 @@ typedef struct runner {
     int inercy;
 } runner_t;
 
+typedef struct jelly {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfClock *clock;
+    sfTime time;
+    sfIntRect rect;
+    float secconds;
+    sfVector2f pos;
+} jelly_t;
+
 typedef struct coin {
     sfSprite *sprite;
     sfTexture *texture;
@@ -57,6 +67,8 @@ typedef struct music {
     sfSoundBuffer *buff_jump;
     sfSound *slide_sound;
     sfSoundBuffer *buff_slide;
+    sfSound *coin_sound;
+    sfSoundBuffer *buff_coin;
 } music_t;
 
 typedef struct jump {
@@ -136,6 +148,7 @@ typedef struct controll {
     game_t s_game;
     texts_t s_texts;
     runner_t s_runner;
+    jelly_t s_jelly;
     background_t s_background;
     jump_t s_jump;
     slide_t s_slide;
@@ -178,10 +191,12 @@ void render_jump(controll_t *s_controll);
 int render_slide(controll_t *s_controll);
 int render_up(controll_t *s_controll);
 int render_down(controll_t *s_controll);
+int render_jelly(controll_t *s_controll);
 
 void move_rect_runner(controll_t *s_controll, int offset, int max_value);
 void move_rect_slide(controll_t *s_controll, int offset, int max_value);
 void move_rect_coin(coin_t *s_coin, int offset, int max_value);
+void move_rect_jelly(controll_t *s_controll, int offset, int max_value);
 void move_layers(controll_t *s_controll);
 void move_layer_1(controll_t *s_controll);
 void move_layer_2(controll_t *s_controll);
@@ -198,6 +213,7 @@ void layers_setpos2(controll_t *s_controll);
 void permanent_displays(controll_t *s_controll);
 void display_runner(controll_t *s_controll);
 void display_background(controll_t *s_controll);
+void display_jelly(controll_t *s_controll);
 void draw_runner(controll_t *s_controll);
 void background_setposition(controll_t *s_controll);
 
@@ -213,14 +229,15 @@ int jump_sound(controll_t *s_controll);
 int slide_sound(controll_t *s_controll);
 
 void init_coin(controll_t *s_controll);
-coin_t *render_coin(coin_t *s_coin, sfVector2f pos, int id);
+coin_t *render_coin(coin_t *s_coin, int id);
 void draw_coin(controll_t *s_controll, coin_t *s_coin);
 void display_coins(controll_t *s_controll);
 void move_coins(controll_t *s_controll, coin_t *s_coin);
 void free_coins(coin_t *s_coin);
+int coin_sound(controll_t *s_controll);
 
-void check_coin_hitbox(coin_t *s_coin, controll_t *s_controll);
+coin_t *check_coin_hitbox(coin_t *s_coin, controll_t *s_controll);
 void touch_coin(controll_t *s_controll);
-void remove_coin(controll_t *s_controll, coin_t *s_coin);
+coin_t *remove_coin(controll_t *s_controll, coin_t *s_coin);
 
 #endif

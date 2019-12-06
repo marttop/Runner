@@ -18,7 +18,7 @@ int render_runner(controll_t *s_controll)
     s_controll->s_runner.jump_sec = 0;
     s_controll->s_runner.texture =
     sfTexture_createFromFile("sprites/run.png", NULL);
-    s_controll->s_runner.pos.x = 190, s_controll->s_runner.pos.y = 730;
+    s_controll->s_runner.pos.x = 300, s_controll->s_runner.pos.y = 730;
     if (!s_controll->s_runner.texture)
         return (EXIT_FAILURE);
     s_controll->s_runner.sprite = sfSprite_create();

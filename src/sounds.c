@@ -39,3 +39,14 @@ int slide_sound(controll_t *s_controll)
     sfSound_setVolume(s_controll->s_music.slide_sound, 100);
     return (0);
 }
+
+int coin_sound(controll_t *s_controll)
+{
+    s_controll->s_music.coin_sound = sfSound_create();
+    s_controll->s_music.buff_coin =
+    sfSoundBuffer_createFromFile("sound/coin.ogg");
+    sfSound_setBuffer(s_controll->s_music.coin_sound,
+    s_controll->s_music.buff_coin);
+    sfSound_setVolume(s_controll->s_music.coin_sound, 100);
+    return (0);
+}

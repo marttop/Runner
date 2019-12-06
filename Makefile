@@ -33,6 +33,7 @@ SRC	=	src/start.c \
 		src/coin.c \
 		src/nodes.c \
 		src/touch_coin.c \
+		src/jelly.c \
 
 OBJ	=	$(SRC:.c=.o)
 

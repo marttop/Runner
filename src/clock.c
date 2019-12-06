@@ -31,6 +31,10 @@ void init_clocks2(controll_t *s_controll)
     sfClock_getElapsedTime(s_controll->s_slide.clock);
     s_controll->s_slide.secconds =
     s_controll->s_slide.time.microseconds / 1000000.0;
+    s_controll->s_jelly.time =
+    sfClock_getElapsedTime(s_controll->s_jelly.clock);
+    s_controll->s_jelly.secconds =
+    s_controll->s_jelly.time.microseconds / 1000000.0;
 }
 
 void init_coin_clocks(controll_t *s_controll)
