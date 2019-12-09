@@ -14,7 +14,8 @@ monster1_t *render_monster(monster1_t *s_monster, int height, int posx)
     new_monster->rect.left = 0, new_monster->rect.top = 0;
     new_monster->rect.width = 205;
     new_monster->rect.height = 165, new_monster->secconds = 0;
-    new_monster->texture = sfTexture_createFromFile("sprites/flying_m.png", NULL);
+    new_monster->texture =
+    sfTexture_createFromFile("sprites/flying_m.png", NULL);
     new_monster->sprite = sfSprite_create();
     sfSprite_setTexture(new_monster->sprite, new_monster->texture, sfTrue);
     sfSprite_setTextureRect(new_monster->sprite, new_monster->rect);

@@ -20,25 +20,29 @@ void render_title(controll_t *s_controll)
 
 void check_play(buttons_t *s_button, controll_t *s_controll)
 {
-    sfVector2i mouse_pos = 
+    sfVector2i mouse_pos =
     sfMouse_getPositionRenderWindow(s_controll->s_game.window);
     if (s_button->id == 0) {
-        if ((mouse_pos.x > s_button->pos.x && mouse_pos.x < s_button->pos.x + 200)
-        && (mouse_pos.y > s_button->pos.y && mouse_pos.y < s_button->pos.y + 65)) {
+        if ((mouse_pos.x > s_button->pos.x &&
+        mouse_pos.x < s_button->pos.x + 200)
+        && (mouse_pos.y > s_button->pos.y &&
+        mouse_pos.y < s_button->pos.y + 65)) {
             s_controll->s_game.scene = 1;
             render_sprites(s_controll);
         }
     }
     else {
-        if ((mouse_pos.x > s_button->pos.x && mouse_pos.x < s_button->pos.x + 200)
-        && (mouse_pos.y > s_button->pos.y && mouse_pos.y < s_button->pos.y + 65))
+        if ((mouse_pos.x > s_button->pos.x &&
+        mouse_pos.x < s_button->pos.x + 200)
+        && (mouse_pos.y > s_button->pos.y &&
+        mouse_pos.y < s_button->pos.y + 65))
             sfRenderWindow_close(s_controll->s_game.window);
     }
 }
 
 void button_hitbox(controll_t *s_controll)
 {
-    buttons_t *temp =s_controll->s_button;
+    buttons_t *temp = s_controll->s_button;
 
     while (temp != NULL) {
         check_play(temp, s_controll);

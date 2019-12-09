@@ -21,7 +21,7 @@ coin_t *remove_coin(controll_t *s_controll, coin_t *s_coin)
     else if (s_controll->s_coin->next == NULL) {
         destroy_coin(s_coin), free(s_coin);
         s_controll->s_coin = NULL;
-        return (NULL);   
+        return (NULL);
     }
     else {
         s_controll->s_coin = s_coin->next;
