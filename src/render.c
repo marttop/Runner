@@ -6,9 +6,13 @@
 */
 
 #include "runner.h"
+#include "map.h"
 
-void render_texts(controll_t *s_controll)
+void render_menu(controll_t *s_controll)
 {
+    init_buttons(s_controll);
+    render_background(s_controll);
+    render_title(s_controll);
 }
 
 void render_sprites(controll_t *s_controll)
@@ -18,7 +22,11 @@ void render_sprites(controll_t *s_controll)
     render_background(s_controll);
     render_slide(s_controll);
     render_jelly(s_controll);
-    init_coin(s_controll);
+    //init_monster(s_controll);
+    //init_coin(s_controll);
+    init_map(s_controll);
+    init_buttons(s_controll);
+    render_title(s_controll);
 }
 
 void render_sounds(controll_t *s_controll)

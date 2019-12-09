@@ -44,3 +44,10 @@ void destroy_coin(coin_t *s_coin)
     sfTexture_destroy(s_coin->texture);
     sfClock_destroy(s_coin->clock);
 }
+
+void destroy_monster(monster1_t *s_monster)
+{
+    sfSprite_destroy(s_monster->sprite);
+    sfTexture_destroy(s_monster->texture);
+    sfClock_destroy(s_monster->clock);
+}

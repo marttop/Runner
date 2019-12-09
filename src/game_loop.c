@@ -9,7 +9,9 @@
 
 int game_loop(controll_t *s_controll)
 {
-    render_all(s_controll);
+    render_menu(s_controll);
+    render_sounds(s_controll);
+    sfRenderWindow_setFramerateLimit(s_controll->s_game.window, 60);
     if (!s_controll->s_game.window)
         return (EXIT_FAILURE);
     sfMusic_play(s_controll->s_music.background_sound);
@@ -18,9 +20,7 @@ int game_loop(controll_t *s_controll)
         &s_controll->s_game.event)) {
             event_controll(s_controll);
         }
-        touch_coin(s_controll);
-        permanent_displays(s_controll);
-        animation(s_controll);
+        game(s_controll);
     }
     destroy_all(s_controll);
     return (0);

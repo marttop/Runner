@@ -34,6 +34,10 @@ SRC	=	src/start.c \
 		src/nodes.c \
 		src/touch_coin.c \
 		src/jelly.c \
+		src/monster.c \
+		src/buttons.c \
+		src/menu.c \
+		src/maps/read_map.c \
 
 OBJ	=	$(SRC:.c=.o)
 

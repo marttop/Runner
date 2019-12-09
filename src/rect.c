@@ -42,3 +42,12 @@ void move_rect_jelly(controll_t *s_controll, int offset, int max_value)
     else
         s_controll->s_jelly.rect.left = 0;
 }
+
+void move_rect_monster(monster1_t *s_monster, int offset, int max_value)
+{
+    if (s_monster->rect.left < max_value - offset) {
+        s_monster->rect.left += offset;
+    }
+    else
+        s_monster->rect.left = 0;
+}

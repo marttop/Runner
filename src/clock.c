@@ -23,6 +23,7 @@ void init_clocks(controll_t *s_controll)
     s_controll->s_runner.time_air.microseconds / 1000000.0;
     init_clocks2(s_controll);
     init_coin_clocks(s_controll);
+    init_monster_clock(s_controll);
 }
 
 void init_clocks2(controll_t *s_controll)
@@ -40,6 +41,16 @@ void init_clocks2(controll_t *s_controll)
 void init_coin_clocks(controll_t *s_controll)
 {
     coin_t *temp = s_controll->s_coin;
+    while (temp != NULL) {
+        temp->time = sfClock_getElapsedTime(temp->clock);
+        temp->secconds = temp->time.microseconds / 1000000.0;
+        temp = temp->next;
+    }
+}
+
+void init_monster_clock(controll_t *s_controll)
+{
+    monster1_t *temp = s_controll->s_monster;
     while (temp != NULL) {
         temp->time = sfClock_getElapsedTime(temp->clock);
         temp->secconds = temp->time.microseconds / 1000000.0;

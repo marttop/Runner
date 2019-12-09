@@ -15,6 +15,10 @@ void event_controll(controll_t *s_controll)
     if (s_controll->s_runner.jump != 1 && s_controll->s_runner.fall != 1) {
         jump_slide(s_controll);
     }
+    if (s_controll->s_game.scene == 0) {
+        if (s_controll->s_game.event.type == sfEvtMouseButtonPressed)
+            button_hitbox(s_controll);
+    }
 }
 
 void jump_slide(controll_t *s_controll)
