@@ -20,10 +20,14 @@ void render_background(controll_t *scontroll)
 
 void display_background(controll_t *s_controll)
 {
-    layers_setpos1(s_controll);
-    layers_setpos2(s_controll);
     layers_display1(s_controll);
     layers_display2(s_controll);
+}
+
+void setpos_background(controll_t *s_controll)
+{
+    layers_setpos1(s_controll);
+    layers_setpos2(s_controll);
 }
 
 void move_layers(controll_t *s_controll)

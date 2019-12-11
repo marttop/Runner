@@ -17,11 +17,12 @@ int game_loop(controll_t *s_controll)
     sfMusic_play(s_controll->s_music.background_sound);
     while (sfRenderWindow_isOpen(s_controll->s_game.window)) {
         while (sfRenderWindow_pollEvent(s_controll->s_game.window,
-        &s_controll->s_game.event)) {
+        &s_controll->s_game.event))
             event_controll(s_controll);
-        }
         game(s_controll);
     }
-    destroy_all(s_controll);
+    destroy_background(s_controll);
+    free_coins(s_controll), free_monsters(s_controll);
+    free_obstacles(s_controll);
     return (0);
 }

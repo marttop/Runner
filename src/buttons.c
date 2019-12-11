@@ -24,7 +24,7 @@ buttons_t *render_buttons(buttons_t *s_button, char const *filepath,
 void init_buttons(controll_t *s_controll)
 {
     buttons_t *s_button = NULL;
-    int x = 860, y = 400;
+    int x = 880, y = 400;
     char const *file[2] = {"sprites/buttons/play_button.png",
     "sprites/buttons/quit_button.png"};
     for (int i = 0; i < 2; i++) {

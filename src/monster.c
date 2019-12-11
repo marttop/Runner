@@ -66,7 +66,8 @@ void draw_monster(controll_t *s_controll, monster1_t *s_monster)
 void move_monster(controll_t *s_controll, monster1_t *s_monster)
 {
     if (s_monster->pos.x > -300) {
-        s_monster->pos.x -= 750 * s_controll->s_background.secconds;
+        s_monster->pos.x -= 750 * s_controll->s_background.secconds *
+        s_controll->s_game.speed;
     }
     else {
         free_monster(s_monster, s_controll);

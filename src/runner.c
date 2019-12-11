@@ -43,7 +43,7 @@ void draw_runner(controll_t *s_controll)
 void display_runner(controll_t *s_controll)
 {
     if (s_controll->s_runner.jump != 1 && s_controll->s_runner.fall != 1
-    && s_controll->s_slide.slide != 1) {
+    && s_controll->s_slide.slide != 1 && s_controll->s_game.scene != 2) {
         draw_runner(s_controll);
     }
     if (s_controll->s_runner.jump_sec > 0.016) {

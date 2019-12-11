@@ -48,11 +48,11 @@ void jump(controll_t *s_controll)
         s_controll->s_runner.jump = 0;
         s_controll->s_runner.inercy = 0;
     }
-    sfClock_restart(s_controll->s_runner.jump_cl);
     sfSprite_setPosition(s_controll->s_jump.sprite_j,
     s_controll->s_runner.pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_controll->s_jump.sprite_j, NULL);
+    sfClock_restart(s_controll->s_runner.jump_cl);
 }
 
 void fall(controll_t *s_controll)
@@ -65,9 +65,9 @@ void fall(controll_t *s_controll)
         s_controll->s_runner.fall = 0;
         s_controll->s_runner.inercy = 20;
     }
-    sfClock_restart(s_controll->s_runner.jump_cl);
     sfSprite_setPosition(s_controll->s_jump.sprite_f,
     s_controll->s_runner.pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_controll->s_jump.sprite_f, NULL);
+    sfClock_restart(s_controll->s_runner.jump_cl);
 }

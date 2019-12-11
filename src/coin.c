@@ -59,13 +59,13 @@ void draw_coin(controll_t *s_controll, coin_t *s_coin)
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_coin->sprite, NULL);
     move_coins(s_controll, s_coin);
-
 }
 
 void move_coins(controll_t *s_controll, coin_t *s_coin)
 {
     if (s_coin->pos.x > -300) {
-        s_coin->pos.x -= 750 * s_controll->s_background.secconds;
+        s_coin->pos.x -= 750 * s_controll->s_background.secconds *
+        s_controll->s_game.speed;
     }
     else {
         free_coin(s_coin, s_controll);

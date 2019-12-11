@@ -38,6 +38,12 @@ SRC	=	src/start.c \
 		src/buttons.c \
 		src/menu.c \
 		src/maps/read_map.c \
+		src/touch_monster.c \
+		src/obstacle.c \
+		src/touch_obstacle.c \
+		src/end_game.c \
+		src/pause.c \
+		src/stopped.c \
 
 OBJ	=	$(SRC:.c=.o)
 

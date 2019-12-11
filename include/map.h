@@ -14,8 +14,16 @@
 #include <fcntl.h>
 #include "runner.h"
 
+typedef struct level {
+    int index_v;
+    int index_h;
+    int distance;
+    char *map;
+} level_t;
+
 void init_map(controll_t *s_controll);
-void get_coins(controll_t *s_controll, char *map);
+void get_coins(controll_t *s_controll, level_t *s_level);
 char *get_map(void);
+void map_conditions(controll_t *s_controll, level_t *s_level, int i);
 
 #endif

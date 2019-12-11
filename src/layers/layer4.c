@@ -42,9 +42,9 @@ void move_layer_4(controll_t *s_controll)
     if (s_controll->s_background.pos4.x > -1920 &&
     s_controll->s_background.pos4_bis.x > 0) {
         s_controll->s_background.pos4.x -= 30 *
-        s_controll->s_background.secconds;
+        s_controll->s_background.secconds * s_controll->s_game.speed;
         s_controll->s_background.pos4_bis.x -= 30 *
-        s_controll->s_background.secconds;
+        s_controll->s_background.secconds * s_controll->s_game.speed;
     }
     else {
         s_controll->s_background.pos4.x = 0;

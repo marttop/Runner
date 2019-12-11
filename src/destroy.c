@@ -7,7 +7,7 @@
 
 #include "runner.h"
 
-void destroy_all(controll_t *s_controll)
+void destroy_background(controll_t *s_controll)
 {
     sfRenderWindow_destroy(s_controll->s_game.window);
     sfSprite_destroy(s_controll->s_background.layer1);
@@ -50,4 +50,10 @@ void destroy_monster(monster1_t *s_monster)
     sfSprite_destroy(s_monster->sprite);
     sfTexture_destroy(s_monster->texture);
     sfClock_destroy(s_monster->clock);
+}
+
+void destroy_obstacle(obstacle_t *s_obstacle)
+{
+    sfSprite_destroy(s_obstacle->sprite);
+    sfTexture_destroy(s_obstacle->texture);
 }

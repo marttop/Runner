@@ -27,7 +27,7 @@ int render_slide(controll_t *s_controll)
 void slide(controll_t *s_controll)
 {
     sfSprite_setPosition(s_controll->s_slide.sprite,
-    (sfVector2f){s_controll->s_runner.pos.x, s_controll->s_runner.pos.y + 30});
+    (sfVector2f){s_controll->s_runner.pos.x, s_controll->s_runner.pos.y});
     sfSprite_setTextureRect(s_controll->s_slide.sprite,
     s_controll->s_slide.rect);
     move_rect_slide(s_controll, 155, 310);

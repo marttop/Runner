@@ -10,7 +10,7 @@
 int main(int ac, char **av)
 {
     controll_t *s_controll = malloc(sizeof(controll_t));
-    s_controll->s_game.scene = 0;
+    s_controll->s_game.scene = 0, s_controll->s_game.speed = 0;
     if (ac == 1) {
         sfVideoMode mode = {1920, 1080, 32};
         s_controll->s_game.window =
@@ -25,5 +25,6 @@ int main(int ac, char **av)
         write(2, "WRONG ARG", 9);
         return (84);
     }
+    free(s_controll);
     return (EXIT_SUCCESS);
 }
