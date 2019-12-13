@@ -35,7 +35,8 @@ void display_obstacle(controll_t *s_controll)
 void draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
 {
     sfSprite_setPosition(s_obstacle->sprite, s_obstacle->pos);
-    sfRenderWindow_drawSprite(s_controll->s_game.window, s_obstacle->sprite, NULL);
+    sfRenderWindow_drawSprite(s_controll->s_game.window,
+    s_obstacle->sprite, NULL);
     move_obstacle(s_controll, s_obstacle);
 
 }

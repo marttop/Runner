@@ -22,7 +22,8 @@ void render_coin_interface(controll_t *s_controll)
     s_controll->s_interface.s_coin.texture, sfTrue);
     sfSprite_setTextureRect(s_controll->s_interface.s_coin.sprite,
     s_controll->s_interface.s_coin.rect);
-    sfSprite_setPosition(s_controll->s_interface.s_coin.sprite, (sfVector2f){50, 50});
+    sfSprite_setPosition(s_controll->s_interface.s_coin.sprite,
+    (sfVector2f){50, 50});
 }
 
 void display_coin_interface(controll_t *s_controll)

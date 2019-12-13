@@ -7,7 +7,6 @@
 
 #include "runner.h"
 
-
 void check_obstacle_hitbox(obstacle_t *s_obstacle, controll_t *s_controll)
 {
     float x = s_obstacle->pos.x, y = s_obstacle->pos.y;
