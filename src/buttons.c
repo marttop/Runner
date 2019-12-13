@@ -25,10 +25,13 @@ void init_buttons(controll_t *s_controll)
 {
     buttons_t *s_button = NULL;
     int x = 880, y = 400;
-    char const *file[2] = {"sprites/buttons/play_button.png",
-    "sprites/buttons/quit_button.png"};
-    for (int i = 0; i < 2; i++) {
+    char const *file_on[3] = {"sprites/buttons/play_on.png",
+    "sprites/buttons/levels_on.png", "sprites/buttons/quit_on.png"};
+    char const *file[3] = {"sprites/buttons/play_button.png",
+    "sprites/buttons/levels_button.png", "sprites/buttons/quit_button.png"};
+    for (int i = 0; i < 3; i++) {
         s_button = render_buttons(s_button, file[i], (sfVector2f){x, y}, i);
+        s_button->texture_on = sfTexture_createFromFile(file_on[i], NULL);
         y += 100;
     }
     s_controll->s_button = s_button;

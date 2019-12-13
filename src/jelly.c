@@ -31,11 +31,13 @@ int render_jelly(controll_t *s_controll)
 
 void display_jelly(controll_t *s_controll)
 {
-    if (s_controll->s_jelly.secconds > 0.1) {
-        move_rect_jelly(s_controll, 170, 680);
-        sfSprite_setTextureRect(s_controll->s_jelly.sprite,
-        s_controll->s_jelly.rect);
-        sfClock_restart(s_controll->s_jelly.clock);
+    if (s_controll->s_game.scene == 1) {
+        if (s_controll->s_jelly.secconds > 0.1) {
+            move_rect_jelly(s_controll, 170, 680);
+            sfSprite_setTextureRect(s_controll->s_jelly.sprite,
+            s_controll->s_jelly.rect);
+            sfClock_restart(s_controll->s_jelly.clock);
+        }
     }
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_controll->s_jelly.sprite, NULL);

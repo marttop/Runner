@@ -12,8 +12,23 @@ void render_menu(controll_t *s_controll)
 {
     init_buttons(s_controll);
     init_pause(s_controll);
+    init_levels(s_controll);
     render_background(s_controll);
     render_title(s_controll);
+}
+
+void render_interface(controll_t *s_controll)
+{
+    render_coin_interface(s_controll);
+    render_texts(s_controll);
+}
+
+void render_texts(controll_t *s_controll)
+{
+    s_controll->s_interface.nb_coin_int = 0;
+    s_controll->font = sfFont_createFromFile("fonts/font.ttf");
+    render_nbcoins_txt(s_controll);
+    render_nbcoins_int(s_controll);
 }
 
 void render_sprites(controll_t *s_controll)

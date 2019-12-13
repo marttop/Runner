@@ -9,7 +9,7 @@
 
 void menu_event(controll_t *s_controll)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyEscape) &&
+    if (sfKeyboard_isKeyPressed(sfKeyP) &&
     s_controll->s_game.scene == 1) {
         s_controll->s_game.speed = 0;
         s_controll->s_game.scene = 2;
@@ -30,7 +30,8 @@ void event_controll(controll_t *s_controll)
     s_controll->s_game.scene != 2) {
         jump_slide(s_controll);
     }
-    if (s_controll->s_game.scene == 0 || s_controll->s_game.scene == 2)
+    if (s_controll->s_game.scene == 0 || s_controll->s_game.scene == 2 ||
+    s_controll->s_game.scene == 3)
         if (s_controll->s_game.event.type == sfEvtMouseButtonPressed)
             button_hitbox(s_controll);
     if (s_controll->s_runner.jump != 1 && s_controll->s_runner.fall != 1 &&

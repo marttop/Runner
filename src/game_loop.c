@@ -11,6 +11,8 @@ int game_loop(controll_t *s_controll)
 {
     render_menu(s_controll);
     render_sounds(s_controll);
+    render_texts(s_controll);
+    render_interface(s_controll);
     sfRenderWindow_setFramerateLimit(s_controll->s_game.window, 60);
     if (!s_controll->s_game.window)
         return (EXIT_FAILURE);

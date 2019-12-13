@@ -50,10 +50,12 @@ void display_coins(controll_t *s_controll)
 
 void draw_coin(controll_t *s_controll, coin_t *s_coin)
 {
-    if (s_coin->secconds > 0.08) {
-        move_rect_coin(s_coin, 50, 300);
-        sfSprite_setTextureRect(s_coin->sprite, s_coin->rect);
-        sfClock_restart(s_coin->clock);
+    if (s_controll->s_game.scene == 1) {
+        if (s_coin->secconds > 0.08) {
+            move_rect_coin(s_coin, 50, 300);
+            sfSprite_setTextureRect(s_coin->sprite, s_coin->rect);
+            sfClock_restart(s_coin->clock);
+        }
     }
     sfSprite_setPosition(s_coin->sprite, s_coin->pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,

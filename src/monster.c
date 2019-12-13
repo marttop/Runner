@@ -51,10 +51,12 @@ void display_monster(controll_t *s_controll)
 
 void draw_monster(controll_t *s_controll, monster1_t *s_monster)
 {
-    if (s_monster->secconds > 0.08) {
-        move_rect_monster(s_monster, 205, 820);
-        sfSprite_setTextureRect(s_monster->sprite, s_monster->rect);
-        sfClock_restart(s_monster->clock);
+    if (s_controll->s_game.scene == 1) {
+        if (s_monster->secconds > 0.08) {
+            move_rect_monster(s_monster, 205, 820);
+            sfSprite_setTextureRect(s_monster->sprite, s_monster->rect);
+            sfClock_restart(s_monster->clock);
+        }
     }
     sfSprite_setPosition(s_monster->sprite, s_monster->pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,

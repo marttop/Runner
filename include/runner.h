@@ -97,6 +97,7 @@ typedef struct coin {
 typedef struct buttons {
     sfSprite *sprite;
     sfTexture *texture;
+    sfTexture *texture_on;
     sfVector2f pos;
     int id;
     struct buttons *next;
@@ -191,7 +192,16 @@ typedef struct game {
     int speed;
 } game_t;
 
+typedef struct interface {
+    coin_t s_coin;
+    sfText *coin_mult;
+    sfText *nb_coin;
+    int nb_coin_int;
+    char *strcoin;
+} interface_t;
+
 typedef struct controll {
+    sfFont *font;
     state_t s_state;
     game_t s_game;
     texts_t s_texts;
@@ -204,18 +214,25 @@ typedef struct controll {
     music_t s_music;
     title_t s_title;
     map_t s_map;
+    interface_t s_interface;
     struct coin *s_coin;
     struct monster1 *s_monster;
     struct buttons *s_button;
-    struct obstacle *s_obstacle;
     struct buttons *s_pause;
+    struct buttons *s_levels;
+    struct obstacle *s_obstacle;
     int nb_coins;
     int nb_monsters;
 } controll_t;
 
+int my_strlen(char *str);
+char *my_revstr(char *str);
+char *my_put_strnbr(int n);
+
 int game_loop(controll_t *s_controll);
 int message(void);
 void pause_game(controll_t *s_controll);
+int is_button(buttons_t *s_button, controll_t *s_controll);
 
 void event_controll(controll_t *s_controll);
 void jump_slide(controll_t *s_controll);
@@ -340,5 +357,17 @@ void free_map(controll_t *s_controll);
 
 void init_pause(controll_t *s_controll);
 void display_pause(controll_t *s_controll);
+void check_on_button(controll_t *s_controll);
+void hover_check(buttons_t *s_button, controll_t *s_controll);
+void init_levels(controll_t *s_controll);
+void display_levels(controll_t *s_controll);
+void check_levels(buttons_t *s_button, controll_t *s_controll);
+
+void render_interface(controll_t *s_controll);
+void render_nbcoins_txt(controll_t *s_controll);
+void render_coin_interface(controll_t *s_controll);
+void render_nbcoins_int(controll_t *s_controll);
+void display_coin_interface(controll_t *s_controll);
+void display_texts(controll_t *s_controll);
 
 #endif

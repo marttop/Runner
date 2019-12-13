@@ -44,6 +44,12 @@ SRC	=	src/start.c \
 		src/end_game.c \
 		src/pause.c \
 		src/stopped.c \
+		src/on_button.c \
+		src/levels.c \
+		src/interface/coin.c \
+		src/interface/render_texts.c \
+		src/interface/display_texts.c \
+		src/interface/my_put_strnbr.c \
 
 OBJ	=	$(SRC:.c=.o)
 
