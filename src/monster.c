@@ -44,12 +44,11 @@ void display_monster(controll_t *s_controll)
 {
     monster1_t *temp = s_controll->s_monster;
     for (; temp != NULL;) {
-        draw_monster(s_controll, temp);
-        temp = temp->next;
+        temp = draw_monster(s_controll, temp);
     }
 }
 
-void draw_monster(controll_t *s_controll, monster1_t *s_monster)
+monster1_t *draw_monster(controll_t *s_controll, monster1_t *s_monster)
 {
     if (s_controll->s_game.scene == 1) {
         if (s_monster->secconds > 0.08) {
@@ -61,17 +60,21 @@ void draw_monster(controll_t *s_controll, monster1_t *s_monster)
     sfSprite_setPosition(s_monster->sprite, s_monster->pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_monster->sprite, NULL);
-    move_monster(s_controll, s_monster);
+    return (move_monster(s_controll, s_monster));
 
 }
 
-void move_monster(controll_t *s_controll, monster1_t *s_monster)
+monster1_t *move_monster(controll_t *s_controll, monster1_t *s_monster)
 {
+    monster1_t *temp = s_monster;
     if (s_monster->pos.x > -300) {
         s_monster->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
+        s_monster = s_monster->next;
     }
     else {
-        free_monster(s_monster, s_controll);
+        s_monster = s_monster->next;
+        free_monster(temp, s_controll);
     }
+    return (s_monster);
 }

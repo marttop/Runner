@@ -183,6 +183,7 @@ typedef struct state {
     float mouse_posy;
     int score;
     char *strscore;
+    int lose;
 } state_t;
 
 typedef struct game {
@@ -287,7 +288,7 @@ void move_layer_3(controll_t *s_controll);
 void move_layer_4(controll_t *s_controll);
 void move_layer_5(controll_t *s_controll);
 void move_layer_6(controll_t *s_controll);
-void move_monster(controll_t *s_controll, monster1_t *s_monster);
+monster1_t *move_monster(controll_t *s_controll, monster1_t *s_monster);
 
 void layers_display1(controll_t *s_controll);
 void layers_display2(controll_t *s_controll);
@@ -302,7 +303,7 @@ void display_jelly(controll_t *s_controll);
 void display_buttons(controll_t *s_controll);
 void draw_runner(controll_t *s_controll);
 void display_monster(controll_t *s_controll);
-void draw_monster(controll_t *s_controll, monster1_t *s_monster);
+monster1_t *draw_monster(controll_t *s_controll, monster1_t *s_monster);
 void background_setposition(controll_t *s_controll);
 void display_stopped(controll_t *s_controll);
 
@@ -311,7 +312,7 @@ void destroy_next(controll_t *s_controll);
 void destroy_coin(coin_t *s_coin);
 void destroy_monster(monster1_t *s_monster);
 void destroy_level(controll_t *s_controll);
-void end_game(controll_t *s_controll);
+void *end_game(controll_t *s_controll);
 void init_clocks(controll_t *s_controll);
 void init_clocks2(controll_t *s_controll);
 void init_coin_clocks(controll_t *s_controll);
@@ -325,9 +326,9 @@ int slide_sound(controll_t *s_controll);
 
 void init_coin(controll_t *s_controll);
 coin_t *render_coin(coin_t *s_coin, int id, int posx);
-void draw_coin(controll_t *s_controll, coin_t *s_coin);
+coin_t *draw_coin(controll_t *s_controll, coin_t *s_coin);
 void display_coins(controll_t *s_controll);
-void move_coins(controll_t *s_controll, coin_t *s_coin);
+coin_t *move_coins(controll_t *s_controll, coin_t *s_coin);
 void free_coin(coin_t *s_coin, controll_t *s_controll);
 int coin_sound(controll_t *s_controll);
 
@@ -337,23 +338,24 @@ coin_t *remove_coin(controll_t *s_controll, coin_t *s_coin);
 
 void check_play(buttons_t *s_button, controll_t *s_controll);
 void button_hitbox(controll_t *s_controll);
-void check_monster_hitbox(monster1_t *s_monster, controll_t *s_controll);
+monster1_t *check_monster_hitbox(monster1_t *s_monster, controll_t *s_controll);
 void touch_monster(controll_t *s_controll);
 
 
 obstacle_t *render_obstacle(obstacle_t *s_obstacle, int height, int posx);
 void display_obstacle(controll_t *s_controll);
-void move_obstacle(controll_t *s_controll, obstacle_t *s_obstacle);
+obstacle_t *move_obstacle(controll_t *s_controll, obstacle_t *s_obstacle);
 void free_obstacle(obstacle_t *s_obstacle, controll_t *s_controll);
 void destroy_obstacle(obstacle_t *s_obstacle);
-void draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle);
+obstacle_t *draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle);
 void touch_obstacle(controll_t *s_controll);
-void check_obstacle_hitbox(obstacle_t *s_obstacle, controll_t *s_controll);
+obstacle_t *check_obstacle_hitbox(obstacle_t *s_obstacle, controll_t *s_controll);
 
 void free_coins(controll_t *s_controll);
 void free_obstacles(controll_t *s_controll);
 void free_monsters(controll_t *s_controll);
 void free_map(controll_t *s_controll);
+void free_buttons(controll_t *s_controll);
 
 void init_pause(controll_t *s_controll);
 void display_pause(controll_t *s_controll);
@@ -369,5 +371,7 @@ void render_coin_interface(controll_t *s_controll);
 void render_nbcoins_int(controll_t *s_controll);
 void display_coin_interface(controll_t *s_controll);
 void display_texts(controll_t *s_controll);
+void destroy_interface(controll_t *s_controll);
+void destroy_buttons(buttons_t *s_button);
 
 #endif

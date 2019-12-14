@@ -43,12 +43,11 @@ void display_coins(controll_t *s_controll)
 {
     coin_t *temp = s_controll->s_coin;
     for (; temp != NULL;) {
-        draw_coin(s_controll, temp);
-        temp = temp->next;
+        temp = draw_coin(s_controll, temp);
     }
 }
 
-void draw_coin(controll_t *s_controll, coin_t *s_coin)
+coin_t *draw_coin(controll_t *s_controll, coin_t *s_coin)
 {
     if (s_controll->s_game.scene == 1) {
         if (s_coin->secconds > 0.08) {
@@ -60,16 +59,20 @@ void draw_coin(controll_t *s_controll, coin_t *s_coin)
     sfSprite_setPosition(s_coin->sprite, s_coin->pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_coin->sprite, NULL);
-    move_coins(s_controll, s_coin);
+    return (move_coins(s_controll, s_coin));
 }
 
-void move_coins(controll_t *s_controll, coin_t *s_coin)
+coin_t *move_coins(controll_t *s_controll, coin_t *s_coin)
 {
+    coin_t *temp = s_coin;
     if (s_coin->pos.x > -300) {
         s_coin->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
+        s_coin = s_coin->next;
     }
     else {
-        free_coin(s_coin, s_controll);
+        s_coin = s_coin->next;
+        free_coin(temp, s_controll);
     }
+    return (s_coin);
 }

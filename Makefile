@@ -50,6 +50,7 @@ SRC	=	src/start.c \
 		src/interface/render_texts.c \
 		src/interface/display_texts.c \
 		src/interface/my_put_strnbr.c \
+		src/interface/destroy.c \
 
 OBJ	=	$(SRC:.c=.o)
 

@@ -41,11 +41,13 @@ void game(controll_t *s_controll)
 {
     if (s_controll->s_game.scene == 1 || s_controll->s_game.scene == 2) {
         setpos_background(s_controll);
-        game_scene(s_controll);
         animation(s_controll);
         touch_obstacle(s_controll);
         touch_coin(s_controll);
         touch_monster(s_controll);
+        game_scene(s_controll);
+        if (s_controll->s_state.lose == 1)
+            end_game(s_controll);
     }
     if (s_controll->s_game.scene == 0 || s_controll->s_game.scene == 3) {
         check_on_button(s_controll);

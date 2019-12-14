@@ -33,7 +33,7 @@ void check_play(buttons_t *s_button, controll_t *s_controll)
     if (is_button(s_button, s_controll)) {
         if (s_button->id == 0) {
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
-            render_sprites(s_controll);
+            render_sprites(s_controll), s_controll->s_state.lose = 0;
             sfClock_restart(s_controll->s_background.clock);
             s_controll->s_interface.nb_coin_int = 0;
             sfText_setString(s_controll->s_interface.nb_coin, "0");
@@ -54,6 +54,7 @@ void check_pause(buttons_t *s_button, controll_t *s_controll)
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
             free_map(s_controll), init_map(s_controll);
             s_controll->s_interface.nb_coin_int = 0;
+            s_controll->s_state.lose = 0;
             sfText_setString(s_controll->s_interface.nb_coin, "0");
         }
         if (s_button->id == 2)

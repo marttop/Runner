@@ -46,3 +46,26 @@ void display_buttons(controll_t *s_controll)
         temp = temp->next;
     }
 }
+
+void free_buttons(controll_t *s_controll)
+{
+    buttons_t *temp;
+    while (s_controll->s_button != NULL) {
+        temp = s_controll->s_button;
+        s_controll->s_button = s_controll->s_button->next;
+        destroy_buttons(temp);
+        free(temp);
+    }
+    while (s_controll->s_levels != NULL) {
+        temp = s_controll->s_levels;
+        s_controll->s_levels = s_controll->s_levels->next;
+        destroy_buttons(temp);
+        free(temp);
+    }
+    while (s_controll->s_pause != NULL) {
+        temp = s_controll->s_pause;
+        s_controll->s_pause = s_controll->s_pause->next;
+        destroy_buttons(temp);
+        free(temp);
+    }
+}

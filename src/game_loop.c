@@ -23,8 +23,7 @@ int game_loop(controll_t *s_controll)
             event_controll(s_controll);
         game(s_controll);
     }
-    destroy_background(s_controll);
-    free_coins(s_controll), free_monsters(s_controll);
-    free_obstacles(s_controll);
+    destroy_background(s_controll), destroy_interface(s_controll);
+    free_buttons(s_controll);
     return (0);
 }

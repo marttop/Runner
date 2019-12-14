@@ -50,9 +50,8 @@ void map_conditions(controll_t *s_controll, level_t *s_level, int i)
 
 void get_coins(controll_t *s_controll, level_t *s_level)
 {
-    coin_t *s_coin = NULL;
-    monster1_t *s_monster = NULL;
-    s_controll->s_monster = s_monster, s_controll->s_coin = s_coin;
+    s_controll->s_monster = NULL, s_controll->s_coin = NULL;
+    s_controll->s_obstacle = NULL;
     for (int i = 0; s_level->map[i] != 'E'; i++) {
         map_conditions(s_controll, s_level, i);
     }

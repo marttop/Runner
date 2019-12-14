@@ -27,27 +27,30 @@ void display_obstacle(controll_t *s_controll)
 {
     obstacle_t *temp = s_controll->s_obstacle;
     for (; temp != NULL;) {
-        draw_obstacle(s_controll, temp);
-        temp = temp->next;
+        temp = draw_obstacle(s_controll, temp);
     }
 }
 
-void draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
+obstacle_t *draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
 {
     sfSprite_setPosition(s_obstacle->sprite, s_obstacle->pos);
     sfRenderWindow_drawSprite(s_controll->s_game.window,
     s_obstacle->sprite, NULL);
-    move_obstacle(s_controll, s_obstacle);
+    return (move_obstacle(s_controll, s_obstacle));
 
 }
 
-void move_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
+obstacle_t *move_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
 {
+    obstacle_t *temp = s_obstacle;
     if (s_obstacle->pos.x > -300) {
         s_obstacle->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
+        s_obstacle = s_obstacle->next;
     }
     else {
-        free_obstacle(s_obstacle, s_controll);
+        s_obstacle = s_obstacle->next;
+        free_obstacle(temp, s_controll);
     }
+    return (s_obstacle);
 }
