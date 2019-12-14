@@ -338,7 +338,8 @@ coin_t *remove_coin(controll_t *s_controll, coin_t *s_coin);
 
 void check_play(buttons_t *s_button, controll_t *s_controll);
 void button_hitbox(controll_t *s_controll);
-monster1_t *check_monster_hitbox(monster1_t *s_monster, controll_t *s_controll);
+monster1_t *check_monster_hitbox(monster1_t *s_monster,
+                                    controll_t *s_controll);
 void touch_monster(controll_t *s_controll);
 
 
@@ -349,7 +350,8 @@ void free_obstacle(obstacle_t *s_obstacle, controll_t *s_controll);
 void destroy_obstacle(obstacle_t *s_obstacle);
 obstacle_t *draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle);
 void touch_obstacle(controll_t *s_controll);
-obstacle_t *check_obstacle_hitbox(obstacle_t *s_obstacle, controll_t *s_controll);
+obstacle_t *check_obstacle_hitbox(obstacle_t *s_obstacle,
+                                    controll_t *s_controll);
 
 void free_coins(controll_t *s_controll);
 void free_obstacles(controll_t *s_controll);
