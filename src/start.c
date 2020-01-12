@@ -23,7 +23,7 @@ int main(int ac, char **av)
 {
     controll_t *s_controll = malloc(sizeof(controll_t));
     s_controll->s_game.scene = 0, s_controll->s_game.speed = 0;
-    s_controll->s_state.lose = 0;
+    s_controll->s_state.lose = 0, s_controll->s_game.infinite = 0;
     if (ac == 2 && (av[1][0] == '-' && av[1][1] == 'h')) message();
     else if (ac == 2) {
         sfVideoMode mode = {1920, 1080, 32};

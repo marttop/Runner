@@ -211,6 +211,7 @@ typedef struct game {
     sfEvent event;
     int scene;
     int speed;
+    int infinite;
 } game_t;
 
 typedef struct end_lvl {
@@ -277,6 +278,7 @@ char *my_put_strnbr(int n);
 
 int game_loop(controll_t *s_controll);
 int message(void);
+void restart_button(buttons_t *s_button, controll_t *s_controll);
 void pause_game(controll_t *s_controll);
 int is_button(buttons_t *s_button, controll_t *s_controll);
 
@@ -286,6 +288,7 @@ void animation(controll_t *s_controll);
 void jump(controll_t *s_controll);
 void fall(controll_t *s_controll);
 void slide(controll_t *s_controll);
+void check_infinite(buttons_t *s_button, controll_t *s_controll);
 
 void render_texts(controll_t *s_controll);
 void render_sprites(controll_t *scontroll, char *filepath);

@@ -6,6 +6,7 @@
 */
 
 #include "runner.h"
+#include "map.h"
 
 void render_win_txt(controll_t *s_controll)
 {
@@ -34,6 +35,7 @@ void show_win(controll_t *s_controll)
     buttons_t *temp;
     buttons_t *temp2;
     sfRenderWindow_clear(s_controll->s_game.window, sfBlack);
+    if (s_controll->s_slide.slide != 0) s_controll->s_slide.slide = 0;
     animation(s_controll), setpos_background(s_controll);
     s_controll->s_interface.end.strscore =
     my_put_strnbr(s_controll->s_interface.end.score_int);
@@ -48,17 +50,38 @@ void show_win(controll_t *s_controll)
     sfRenderWindow_display(s_controll->s_game.window);
 }
 
+void random_init(controll_t *s_controll)
+{
+    int i = 0;
+    srand(time(NULL));
+    i = rand() % 2;
+    switch (i) {
+        case 0 :
+        init_map(s_controll, "maps/map1");
+        break;
+        case 1 :
+        init_map(s_controll, "maps/map2");
+        break;
+        case 2 :
+        init_map(s_controll, "maps/map3");
+        break;
+    }
+}
+
 void winning_check(controll_t *s_controll)
 {
     if (s_controll->s_monster == NULL && s_controll->s_obstacle == NULL &&
     s_controll->s_obstacle == NULL) {
-        s_controll->s_game.scene = 5;
-        s_controll->s_interface.end.score_int =
-        s_controll->s_interface.distance_int *
-        s_controll->s_interface.nb_coin_int;
-        s_controll->s_interface.end.strscore =
-        my_put_strnbr(s_controll->s_interface.end.score_int);
-        sfText_setString(s_controll->s_interface.end.score,
-        s_controll->s_interface.end.strscore);
+        if (s_controll->s_game.infinite == 0) {
+            s_controll->s_game.scene = 5;
+            s_controll->s_interface.end.score_int =
+            s_controll->s_interface.distance_int *
+            s_controll->s_interface.nb_coin_int;
+            s_controll->s_interface.end.strscore =
+            my_put_strnbr(s_controll->s_interface.end.score_int);
+            sfText_setString(s_controll->s_interface.end.score,
+            s_controll->s_interface.end.strscore);
+        }
+        else random_init(s_controll);
     }
 }

@@ -49,6 +49,7 @@ SRC	=	src/start.c \
 		src/levels.c \
 		src/dead.c \
 		src/win.c \
+		src/infinite.c \
 		src/interface/coin.c \
 		src/interface/render_texts.c \
 		src/interface/display_texts.c \
