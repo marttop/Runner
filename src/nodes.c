@@ -64,3 +64,11 @@ void free_obstacle(obstacle_t *s_obstacle, controll_t *s_controll)
         free(s_obstacle);
     }
 }
+
+buttons_t *get_last_node(buttons_t *s_button)
+{
+    buttons_t *temp = s_button;
+    while (temp->next->next != NULL)
+        temp = temp->next;
+    return (temp);
+}

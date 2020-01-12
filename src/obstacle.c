@@ -43,7 +43,7 @@ obstacle_t *draw_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
 obstacle_t *move_obstacle(controll_t *s_controll, obstacle_t *s_obstacle)
 {
     obstacle_t *temp = s_obstacle;
-    if (s_obstacle->pos.x > -300) {
+    if (s_obstacle->pos.x > -700) {
         s_obstacle->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
         s_obstacle = s_obstacle->next;

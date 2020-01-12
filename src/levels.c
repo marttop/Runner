@@ -6,6 +6,7 @@
 */
 
 #include "runner.h"
+#include "map.h"
 
 void init_levels(controll_t *s_controll)
 {
@@ -35,16 +36,55 @@ void display_levels(controll_t *s_controll)
     }
 }
 
+void check_levels3(buttons_t *s_button, controll_t *s_controll)
+{
+    if (s_button->id == 3) {
+        if (s_controll->current_map != NULL) free(s_controll->current_map);
+        s_controll->current_map = my_strdup("maps/map3");
+        s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
+        render_sprites(s_controll, s_controll->current_map);
+        s_controll->s_state.lose = 0;
+        sfClock_restart(s_controll->s_background.clock);
+        s_controll->s_interface.nb_coin_int = 0;
+        sfText_setString(s_controll->s_interface.nb_coin, "0");
+        s_controll->s_interface.distance_int = 0;
+        sfText_setString(s_controll->s_interface.nb_dist, "0");
+    }
+}
+
+void check_levels2(buttons_t *s_button, controll_t *s_controll)
+{
+    if (s_button->id == 2) {
+        if (s_controll->current_map != NULL) free(s_controll->current_map);
+        s_controll->current_map = my_strdup("maps/map2");
+        s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
+        render_sprites(s_controll, s_controll->current_map);
+        s_controll->s_state.lose = 0;
+        sfClock_restart(s_controll->s_background.clock);
+        s_controll->s_interface.nb_coin_int = 0;
+        sfText_setString(s_controll->s_interface.nb_coin, "0");
+        s_controll->s_interface.distance_int = 0;
+        sfText_setString(s_controll->s_interface.nb_dist, "0");
+    }
+}
+
 void check_levels(buttons_t *s_button, controll_t *s_controll)
 {
     if (is_button(s_button, s_controll)) {
         if (s_button->id == 1) {
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
-            render_sprites(s_controll), s_controll->s_state.lose = 0;
+            free(s_controll->current_map);
+            s_controll->current_map = my_strdup("maps/map1");
+            render_sprites(s_controll, s_controll->current_map);
+            s_controll->s_state.lose = 0;
             sfClock_restart(s_controll->s_background.clock);
             s_controll->s_interface.nb_coin_int = 0;
             sfText_setString(s_controll->s_interface.nb_coin, "0");
+            s_controll->s_interface.distance_int = 0;
+            sfText_setString(s_controll->s_interface.nb_dist, "0");
         }
+        check_levels2(s_button, s_controll);
+        check_levels3(s_button, s_controll);
         if (s_button->id == 4)
             s_controll->s_game.scene = 0;
     }

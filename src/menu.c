@@ -33,10 +33,14 @@ void check_play(buttons_t *s_button, controll_t *s_controll)
     if (is_button(s_button, s_controll)) {
         if (s_button->id == 0) {
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
-            render_sprites(s_controll), s_controll->s_state.lose = 0;
+            s_controll->current_map = my_strdup(s_controll->arg_map);
+            render_sprites(s_controll, s_controll->arg_map);
+            s_controll->s_state.lose = 0;
             sfClock_restart(s_controll->s_background.clock);
             s_controll->s_interface.nb_coin_int = 0;
             sfText_setString(s_controll->s_interface.nb_coin, "0");
+            s_controll->s_interface.distance_int = 0;
+            sfText_setString(s_controll->s_interface.nb_dist, "0");
         }
         if (s_button->id == 1)
             s_controll->s_game.scene = 3;
@@ -48,17 +52,22 @@ void check_play(buttons_t *s_button, controll_t *s_controll)
 void check_pause(buttons_t *s_button, controll_t *s_controll)
 {
     if (is_button(s_button, s_controll)) {
-        if (s_button->id == 0)
+        if (s_button->id == 0 && s_controll->s_game.scene != 4)
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
         if (s_button->id == 1) {
             s_controll->s_game.scene = 1, s_controll->s_game.speed = 1;
-            free_map(s_controll), init_map(s_controll);
+            render_sprites(s_controll, s_controll->current_map);
+            sfClock_restart(s_controll->s_background.clock);
             s_controll->s_interface.nb_coin_int = 0;
             s_controll->s_state.lose = 0;
             sfText_setString(s_controll->s_interface.nb_coin, "0");
+            s_controll->s_interface.distance_int = 0;
+            sfText_setString(s_controll->s_interface.nb_dist, "0");
         }
-        if (s_button->id == 2)
-            end_game(s_controll);
+        if (s_button->id == 2) {
+            set_final_score(s_controll);
+            s_controll->s_game.scene = 0;
+        }
         if (s_button->id == 3)
             sfRenderWindow_close(s_controll->s_game.window);
     }
@@ -67,19 +76,20 @@ void check_pause(buttons_t *s_button, controll_t *s_controll)
 void button_hitbox(controll_t *s_controll)
 {
     buttons_t *temp;
+    if (s_controll->s_game.scene == 3) {
+        temp = s_controll->s_levels;
+        while (temp != NULL)
+            check_levels(temp, s_controll), temp = temp->next;
+    }
     if (s_controll->s_game.scene == 0) {
         temp = s_controll->s_button;
         while (temp != NULL)
             check_play(temp, s_controll), temp = temp->next;
     }
-    if (s_controll->s_game.scene == 2) {
+    if (s_controll->s_game.scene == 2 || s_controll->s_game.scene == 4 ||
+    s_controll->s_game.scene == 5) {
         temp = s_controll->s_pause;
         while (temp != NULL)
             check_pause(temp, s_controll), temp = temp->next;
-    }
-    if (s_controll->s_game.scene == 3) {
-        temp = s_controll->s_levels;
-        while (temp != NULL)
-            check_levels(temp, s_controll), temp = temp->next;
     }
 }

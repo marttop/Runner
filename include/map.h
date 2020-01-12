@@ -21,9 +21,10 @@ typedef struct level {
     char *map;
 } level_t;
 
-void init_map(controll_t *s_controll);
+void init_map(controll_t *s_controll, char *filepath);
 void get_coins(controll_t *s_controll, level_t *s_level);
-char *get_map(void);
+char *get_map(char *filepath);
+char *my_strdup(char *str);
 void map_conditions(controll_t *s_controll, level_t *s_level, int i);
 
 #endif

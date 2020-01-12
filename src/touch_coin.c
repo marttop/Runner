@@ -37,8 +37,11 @@ coin_t *check_coin_hitbox(coin_t *s_coin, controll_t *s_controll)
     if ((x >= x_run && x <= x_run + 100) && (y >= y_run && y <= y_run + 105)) {
         sfSound_play(s_controll->s_music.coin_sound);
         s_controll->s_interface.nb_coin_int += 1;
+        free_previous_txt(s_controll->s_interface.strcoin);
+        s_controll->s_interface.strcoin =
+        my_put_strnbr(s_controll->s_interface.nb_coin_int);
         sfText_setString(s_controll->s_interface.nb_coin,
-        my_put_strnbr(s_controll->s_interface.nb_coin_int));
+        s_controll->s_interface.strcoin);
         return (remove_coin(s_controll, s_coin));
     }
     s_coin = s_coin->next;

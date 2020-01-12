@@ -15,6 +15,13 @@ obstacle_t *check_obstacle_hitbox(obstacle_t *s_obstacle,
     if (x_run + 80 >= x + 20 && x_run + 80 <= x + 170 && y_run + 80 >= y &&
     y_run + 80 <= y + 200) {
         s_controll->s_state.lose = 1;
+        s_controll->s_interface.end.score_int =
+        s_controll->s_interface.distance_int *
+        s_controll->s_interface.nb_coin_int;
+        s_controll->s_interface.end.strscore =
+        my_put_strnbr(s_controll->s_interface.end.score_int);
+        sfText_setString(s_controll->s_interface.end.score,
+        s_controll->s_interface.end.strscore);
     }
     return (s_obstacle->next);
 }

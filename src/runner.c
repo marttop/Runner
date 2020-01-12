@@ -19,12 +19,13 @@ int render_runner(controll_t *s_controll)
     s_controll->s_runner.texture =
     sfTexture_createFromFile("sprites/run.png", NULL);
     s_controll->s_runner.pos.x = 300, s_controll->s_runner.pos.y = 730;
-    if (!s_controll->s_runner.texture)
-        return (EXIT_FAILURE);
     s_controll->s_runner.sprite = sfSprite_create();
     sfSprite_setTexture(s_controll->s_runner.sprite,
     s_controll->s_runner.texture, sfTrue);
-    sfSprite_setPosition(s_controll->s_runner.sprite, s_controll->s_runner.pos);
+    sfSprite_setTextureRect(s_controll->s_runner.sprite,
+    s_controll->s_runner.rect);
+    sfSprite_setPosition(s_controll->s_runner.sprite,
+    s_controll->s_runner.pos);
     return (0);
 }
 

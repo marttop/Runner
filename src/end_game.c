@@ -9,7 +9,8 @@
 
 void *end_game(controll_t *s_controll)
 {
-    s_controll->s_game.scene = 0;
+    write_score(s_controll);
+    s_controll->s_game.scene = 4;
     destroy_level(s_controll);
     free_coins(s_controll);
     free_monsters(s_controll);

@@ -16,13 +16,13 @@ int get_file_size(int fd)
     return (i);
 }
 
-char *get_map(void)
+char *get_map(char *filepath)
 {
-    int fd = open("maps/map1", O_RDONLY);
+    int fd = open(filepath, O_RDONLY);
     int file_size = get_file_size(fd);
     char *map = malloc(file_size + 1);
     close(fd);
-    fd = open("maps/map1", O_RDONLY);
+    fd = open(filepath, O_RDONLY);
     read(fd, map, file_size);
     map[get_file_size(fd) + 1] = '\0';
     close(fd);
@@ -58,10 +58,10 @@ void get_coins(controll_t *s_controll, level_t *s_level)
     free(s_level->map);
 }
 
-void init_map(controll_t *s_controll)
+void init_map(controll_t *s_controll, char *filepath)
 {
     level_t s_level;
-    s_level.map = get_map();
+    s_level.map = get_map(filepath);
     s_level.index_h = 0, s_level.index_v = 1, s_level.distance = 0;
     get_coins(s_controll, &s_level);
 }

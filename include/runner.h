@@ -47,6 +47,26 @@ typedef struct runner {
     int inercy;
 } runner_t;
 
+typedef struct dead {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfClock *clock;
+    sfTime time;
+    sfIntRect rect;
+    float seconds;
+    sfVector2f pos;
+} dead_t;
+
+typedef struct win {
+    sfSprite *sprite;
+    sfTexture *texture;
+    sfClock *clock;
+    sfTime time;
+    sfIntRect rect;
+    float seconds;
+    sfVector2f pos;
+} win_t;
+
 typedef struct jelly {
     sfSprite *sprite;
     sfTexture *texture;
@@ -193,20 +213,45 @@ typedef struct game {
     int speed;
 } game_t;
 
+typedef struct end_lvl {
+    sfText *lose;
+    sfText *win;
+    sfText *score;
+    sfText *your_score;
+    int score_int;
+    char *strscore;
+} end_lvl_t;
+
 typedef struct interface {
     coin_t s_coin;
+    end_lvl_t end;
+    sfClock *clock;
+    sfTime time;
     sfText *coin_mult;
     sfText *nb_coin;
+    sfText *best;
+    sfText *your_best;
+    sfText *distance;
+    sfText *nb_dist;
+    int distance_int;
     int nb_coin_int;
+    int best_int;
+    float seconds;
+    char *strdistance;
     char *strcoin;
+    char *strbest;
 } interface_t;
 
 typedef struct controll {
+    char *current_map;
+    char *arg_map;
     sfFont *font;
     state_t s_state;
     game_t s_game;
     texts_t s_texts;
     runner_t s_runner;
+    dead_t s_dead;
+    win_t s_win;
     jelly_t s_jelly;
     background_t s_background;
     jump_t s_jump;
@@ -243,7 +288,7 @@ void fall(controll_t *s_controll);
 void slide(controll_t *s_controll);
 
 void render_texts(controll_t *s_controll);
-void render_sprites(controll_t *scontroll);
+void render_sprites(controll_t *scontroll, char *filepath);
 void render_sounds(controll_t *s_controll);
 void render_all(controll_t *scontroll);
 void render_menu(controll_t *s_controll);
@@ -270,6 +315,8 @@ int render_up(controll_t *s_controll);
 int render_down(controll_t *s_controll);
 int render_jelly(controll_t *s_controll);
 int render_stopped(controll_t *s_controll);
+int render_dead(controll_t *s_controll);
+int render_win(controll_t *s_controll);
 monster1_t *render_monster(monster1_t *s_monster, int height, int posx);
 void free_monster(monster1_t *s_monster, controll_t *s_controll);
 buttons_t *render_buttons(buttons_t *s_button, char const *filepath,
@@ -281,6 +328,8 @@ void move_rect_slide(controll_t *s_controll, int offset, int max_value);
 void move_rect_coin(coin_t *s_coin, int offset, int max_value);
 void move_rect_jelly(controll_t *s_controll, int offset, int max_value);
 void move_rect_monster(monster1_t *s_monster, int offset, int max_value);
+void move_rect_dead(controll_t *s_controll, int offset, int max_value);
+void move_rect_win(controll_t *s_controll, int offset, int max_value);
 void move_layers(controll_t *s_controll);
 void move_layer_1(controll_t *s_controll);
 void move_layer_2(controll_t *s_controll);
@@ -306,6 +355,8 @@ void display_monster(controll_t *s_controll);
 monster1_t *draw_monster(controll_t *s_controll, monster1_t *s_monster);
 void background_setposition(controll_t *s_controll);
 void display_stopped(controll_t *s_controll);
+void display_dead(controll_t *s_controll);
+void display_win(controll_t *s_controll);
 
 void destroy_background(controll_t *s_controll);
 void destroy_next(controll_t *s_controll);
@@ -315,6 +366,7 @@ void destroy_level(controll_t *s_controll);
 void *end_game(controll_t *s_controll);
 void init_clocks(controll_t *s_controll);
 void init_clocks2(controll_t *s_controll);
+void init_clocks3(controll_t *s_controll);
 void init_coin_clocks(controll_t *s_controll);
 void init_monster_clock(controll_t *s_controll);
 void init_monster(controll_t *s_controll);
@@ -371,9 +423,25 @@ void render_interface(controll_t *s_controll);
 void render_nbcoins_txt(controll_t *s_controll);
 void render_coin_interface(controll_t *s_controll);
 void render_nbcoins_int(controll_t *s_controll);
+void render_distace_int(controll_t *s_controll);
+void render_ditance_txt(controll_t *s_controll);
 void display_coin_interface(controll_t *s_controll);
+void display_end_txts(controll_t *s_controll);
+void render_final_score_txt(controll_t *s_controll);
+void render_final_score_int(controll_t *s_controll);
+void end_txt_lose_gameover(controll_t *s_controll);
 void display_texts(controll_t *s_controll);
 void destroy_interface(controll_t *s_controll);
 void destroy_buttons(buttons_t *s_button);
+void free_previous_txt(char *str);
+buttons_t *get_last_node(buttons_t *s_button);
+void render_win_txt(controll_t *s_controll);
+void show_win(controll_t *s_controll);
+void winning_check(controll_t *s_controll);
+int get_score(void);
+void write_score(controll_t *s_controll);
+void render_best_txt(controll_t *s_controll);
+void render_best_int(controll_t *s_controll);
+void set_final_score(controll_t *s_controll);
 
 #endif

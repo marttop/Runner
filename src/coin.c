@@ -65,7 +65,7 @@ coin_t *draw_coin(controll_t *s_controll, coin_t *s_coin)
 coin_t *move_coins(controll_t *s_controll, coin_t *s_coin)
 {
     coin_t *temp = s_coin;
-    if (s_coin->pos.x > -300) {
+    if (s_coin->pos.x > -700) {
         s_coin->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
         s_coin = s_coin->next;

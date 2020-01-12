@@ -67,7 +67,7 @@ monster1_t *draw_monster(controll_t *s_controll, monster1_t *s_monster)
 monster1_t *move_monster(controll_t *s_controll, monster1_t *s_monster)
 {
     monster1_t *temp = s_monster;
-    if (s_monster->pos.x > -300) {
+    if (s_monster->pos.x > -700) {
         s_monster->pos.x -= 750 * s_controll->s_background.secconds *
         s_controll->s_game.speed;
         s_monster = s_monster->next;

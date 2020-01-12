@@ -38,6 +38,7 @@ SRC	=	src/start.c \
 		src/buttons.c \
 		src/menu.c \
 		src/maps/read_map.c \
+		src/maps/my_strdup.c \
 		src/touch_monster.c \
 		src/obstacle.c \
 		src/touch_obstacle.c \
@@ -46,11 +47,18 @@ SRC	=	src/start.c \
 		src/stopped.c \
 		src/on_button.c \
 		src/levels.c \
+		src/dead.c \
+		src/win.c \
 		src/interface/coin.c \
 		src/interface/render_texts.c \
 		src/interface/display_texts.c \
 		src/interface/my_put_strnbr.c \
 		src/interface/destroy.c \
+		src/interface/str_manage.c \
+		src/interface/end_lvl.c \
+		src/interface/final_score.c \
+		src/interface/score.c \
+		src/interface/best_score.c \
 
 OBJ	=	$(SRC:.c=.o)
 

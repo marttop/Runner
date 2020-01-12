@@ -26,9 +26,8 @@ void event_controll(controll_t *s_controll)
     if (s_controll->s_game.event.type == sfEvtClosed) {
         sfRenderWindow_close(s_controll->s_game.window);
     }
-    if (s_controll->s_game.scene == 0 || s_controll->s_game.scene == 2 ||
-    s_controll->s_game.scene == 3)
-        if (s_controll->s_game.event.type == sfEvtMouseButtonPressed)
+    if (s_controll->s_game.scene != 1)
+        if (s_controll->s_game.event.type == sfEvtMouseButtonReleased)
             button_hitbox(s_controll);
     if (s_controll->s_game.scene == 1) {
         if (s_controll->s_runner.jump != 1 && s_controll->s_runner.fall != 1 &&

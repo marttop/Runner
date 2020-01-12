@@ -21,7 +21,8 @@ void check_on_button(controll_t *s_controll)
     buttons_t *temp;
     if (s_controll->s_game.scene == 0)
         temp = s_controll->s_button;
-    if (s_controll->s_game.scene == 2)
+    if (s_controll->s_game.scene == 2 || s_controll->s_game.scene == 4 ||
+    s_controll->s_game.scene == 5)
         temp = s_controll->s_pause;
     if (s_controll->s_game.scene == 3)
         temp = s_controll->s_levels;

@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/my_runner",
-            "args": [],
+            "args": ["maps/map3"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
