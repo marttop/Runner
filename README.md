@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # My_Runner
 
 This is a "runner style" game where you have to dodge obstacles, lot of controls are available to the player and good skills are recommended.
@@ -127,7 +126,3 @@ from the math library
 All functions  
   
 > :exclamation: Any unspecified functions are de facto banned.  
-=======
-# Runner
-My first runner game writter in C
->>>>>>> Initial commit
